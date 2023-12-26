@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+.listaTareas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url(../../../assets/bg1.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Nunito', sans-serif;
+    flex-direction: column;
+}
+
+.listaTareas h1 {
+    font-size: clamp(2.5rem, 3.5vw, 10rem);
+    margin-bottom: 20px;
+}
+
+.listaTareas .content {
+    max-width: 800px;
+    width: 100%;
+    height: 750px;
+    background-color: rgba(255, 205, 112, 0.5);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    margin: 0 30px;
+}
+
+.listaTareas .content ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 640px;
+    transition: all .350s ease;
+    list-style: none;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+
+.listaTareas .content li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 20px;
+    width: 90%;
+}
+
+.listaTareas .content li .titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.listaTareas .content li .titulo .front {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listaTareas .content li .titulo .front input {}
+
+.listaTareas .content li .titulo .front h2 {
+    margin-left: 20px;
+}
+
+.listaTareas .content li .descripcion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+.listaTareas .bottom-bar {
+    margin: 20px 0 30px 0;
+    width: 90%;
+    height: 1px;
+    background-color: black;
+}
+
+.listaTareas .actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.listaTareas .prioridad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listaTareas .prioridad p {
+    margin-top: 10px;
+    font-size: 22px;
+    color: #2f3640;
+}
+
+
+/* Componentes */
+
+/* Checkbox */
+.checkbox-container {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+}
+
+.custom-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.custom-checkbox:checked~.checkmark {
+    background-color: #2196F3;
+    box-shadow: 0 3px 7px rgba(33, 150, 243, 0.3);
+}
+
+.custom-checkbox:checked~.checkmark:after {
+    display: block;
+}
+
+@keyframes checkAnim {
+    0% {
+        height: 0;
+    }
+
+    100% {
+        height: 10px;
+    }
+}
+
+.custom-checkbox:checked~.checkmark:after {
+    animation: checkAnim 0.2s forwards;
+}
+
+/* Delete button */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border: none;
+    border-radius: 1rem;
+    transition: all 0.5s linear;
+    padding: 1em;
+    background-color: rgba(180, 83, 107, 0.11);
+    cursor: pointer;
+    transition: all .350s ease;
+}
+
+.tooltip:hover {
+    transform: scale(1.1);
+    background-color: rgb(255, 0, 0);
+}
+
+.tooltip svg {
+    transition: all .350s ease;
+}
+
+.tooltip:hover svg {
+    transform: scale(1.2);
+}
+
+/* añadir tarea */
+.action-button {
+    background-color: #ff7979;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    box-shadow: 2px 2px 10px #ff7979;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-button:hover {
+    background-color: #2f3640;
+    color: #ff7979;
+    box-shadow: 2px 2px 20px #2f3640;
+    transform: translateY(-2px);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #a8a8a8;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+/* Subir tareas */
+.listaTareas .subir {
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.7em 2em;
+    border: 3px solid #009dff;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+    color: #009dff;
+    text-decoration: none;
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+
+.listaTareas .subir:before {
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: '';
+    background-color: #009dff;
+    z-index: -1;
+}
+
+.listaTareas .subir:hover,
+.listaTareas .subir:focus {
+    color: rgb(0, 0, 0);
+}
+
+.listaTareas .subir:hover:before,
+.listaTareas .subir:focus:before {
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+}
+
+.listaTareas .subir:active {
+    transform: scale(0.9);
+}
+
+/* Cambiar fondo */
+.cambiarFondo {
+    padding: 17px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.5s ease;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.cambiarFondo:hover {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+}
+
+.cambiarFondo:active {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+@media screen and (max-width: 750px) {
+    .cambiarFondo {
+        padding: 10px 24px;
+        font-size: 12px;
+        top: 20px;
+        right: 20px;
+    }
+
+    .action-button {
+        padding: 8px 18px;
+        font-size: 14px;
+    }
+
+    .listaTareas .actions {
+        gap: 20px;
+    }
+
+    .listaTareas .content {
+        height: 550px;
+    }
+}
