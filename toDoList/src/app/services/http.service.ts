@@ -25,11 +25,10 @@ export class HttpService {
   }
 
   registrarUsuario(username: string, password: string): Observable<any> {
-    const listaTareas: ITarea[] = []
-    const requestBody: IUsuario = { username: username, password: password, listaTareas: listaTareas };
-    return this.http.post<any>('http://localhost:3000/registrarUsuario', requestBody, this.httpOptions).pipe(
+    const requestBody = { username: username, password: password };
+    return this.http.post<any>('http://localhost:3000/loguin/registrarUsuario', requestBody, this.httpOptions).pipe(
       catchError(this.handleError),
-      map(response => {
+      map((response: any) => {
         if (response && response.token) {
           return response.token;
         }
@@ -39,11 +38,10 @@ export class HttpService {
   }
 
   loguearUsuario(username: string, password: string): Observable<any> {
-    const listaTareas: ITarea[] = []
-    const requestBody: IUsuario = { username: username, password: password, listaTareas: listaTareas };
-    return this.http.post<any>('http://localhost:3000/loguearUsuario', requestBody, this.httpOptions).pipe(
+    const requestBody = { username: username, password: password };
+    return this.http.post<any>('http://localhost:3000/loguin/loguearUsuario', requestBody, this.httpOptions).pipe(
       catchError(this.handleError),
-      map(response => {
+      map((response: any) => {
         if (response && response.token) {
           return response.token;
         }
@@ -53,7 +51,7 @@ export class HttpService {
   }
 
   obtenerTareas(username: string): Observable<any> {
-    return this.http.get<any>(`http://localhost:3000/obtenerTareas/${username}`, this.httpOptions).pipe(
+    return this.http.get<any>(`http://localhost:3000/functions/obtenerTareas/${username}`, this.httpOptions).pipe(
       catchError(this.handleError),
       map((response: any) => {
         if (response && response.tareas) {
@@ -65,8 +63,8 @@ export class HttpService {
   }
 
   actualizarTareas(username: string, listaTareas: ITarea[]): Observable<any> {
-    const requestBody = { username: username, tareas: listaTareas };
-    return this.http.post<any>('http://localhost:3000/actualizarTarea', requestBody, this.httpOptions).pipe(
+    const requestBody = { tareas: listaTareas };
+    return this.http.put<any>(`http://localhost:3000/functions/insertarTareas/${username}`, requestBody, this.httpOptions).pipe(
       catchError(this.handleError),
     );
   }
