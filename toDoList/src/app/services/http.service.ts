@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { ITarea } from '../ITarea';
-import { IUsuario } from '../IUsuario';
+import { ITarea } from './ITarea';
+import { IUsuario } from './IUsuario';
 
 @Injectable({
   providedIn: 'root'

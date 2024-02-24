@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ITarea } from 'src/app/ITarea';
+import { ITarea } from 'src/app/services/ITarea';
 import { UserService } from 'src/app/services/user.service';
 import { HttpService } from '../../services/http.service';
 import Swal from 'sweetalert2'
